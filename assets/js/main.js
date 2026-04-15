@@ -3,7 +3,8 @@
   var nav = document.getElementById('nav');
 
   function onScroll() {
-    if (window.scrollY > 24) {
+    // Sólido no topo → levemente transparente ao rolar
+    if (window.scrollY > 60) {
       nav.classList.add('scrolled');
     } else {
       nav.classList.remove('scrolled');
