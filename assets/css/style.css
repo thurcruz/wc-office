@@ -461,6 +461,12 @@ ul, ol {
   gap: 80px;
   align-items: center;
 }
+.sobre-logo-preto {
+  height: 48px;
+  width: auto;
+  margin-bottom: 32px;
+  opacity: 0.85;
+}
 .sobre-label {
   display: inline-block;
   font-family: 'Instrument Sans', sans-serif;
