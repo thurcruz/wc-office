@@ -105,6 +105,48 @@
   });
 })();
 
+/* ===CONTADOR DE NÚMEROS=== */
+(function () {
+  var counters = document.querySelectorAll('.numero-valor[data-target]');
+  if (!counters.length || !window.IntersectionObserver) return;
+
+  var triggered = false;
+
+  function animateCounter(el) {
+    var target   = parseInt(el.getAttribute('data-target'), 10);
+    var suffix   = el.getAttribute('data-suffix') || '';
+    var duration = 1800;
+    var start    = null;
+
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      var progress = Math.min((timestamp - start) / duration, 1);
+      el.textContent = Math.floor(easeOut(progress) * target) + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target + suffix;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting && !triggered) {
+        triggered = true;
+        counters.forEach(animateCounter);
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  var section = document.getElementById('numeros');
+  if (section) observer.observe(section);
+})();
+
 /* ===ANO DINÂMICO NO FOOTER=== */
 (function () {
   var el = document.getElementById('footer-year');

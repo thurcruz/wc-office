@@ -105,11 +105,13 @@ ul, ol {
   background: var(--preto);
   transition: background 0.4s ease, backdrop-filter 0.4s ease;
 }
-/* Ao rolar: levemente transparente mas ainda escuro */
+/* Ao rolar: efeito glass — escuro mas com blur de vidro */
 #nav.scrolled {
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
 }
 .nav-inner {
   display: flex;
@@ -121,7 +123,7 @@ ul, ol {
   margin: 0 auto;
 }
 .nav-logo img {
-  height: 36px;
+  height: 28px;
   width: auto;
 }
 .nav-logo img[src=""],
@@ -227,7 +229,10 @@ ul, ol {
 }
 .nav-mobile .btn-nav-whatsapp {
   align-self: flex-start;
-  margin-top: 4px;
+  margin-top: 8px;
+  padding: 12px 20px !important;
+  width: auto !important;
+  border-bottom: none !important;
 }
 
 /* ===HERO=== */
@@ -239,7 +244,7 @@ ul, ol {
   align-items: center;
 }
 .hero-content {
-  max-width: 680px;
+  max-width: 960px;
   padding: 80px 0;
 }
 .hero-badge {
@@ -1008,6 +1013,111 @@ ul, ol {
   width: 28px;
   height: 28px;
   fill: white;
+}
+
+/* ===SOBRE — FOTO=== */
+.sobre-foto-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  max-height: 520px;
+  background: var(--creme-escuro);
+  overflow: hidden;
+}
+.sobre-foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.sobre-foto-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+  background: var(--creme-escuro);
+  color: var(--texto-suave);
+  position: absolute;
+  inset: 0;
+}
+.sobre-foto-placeholder svg {
+  opacity: 0.4;
+}
+.sobre-foto-placeholder span {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  color: var(--texto-suave);
+  letter-spacing: 0.06em;
+}
+
+/* ===ANIMAÇÃO — SHINE NOS ÍCONES=== */
+@keyframes icon-shine {
+  0%, 75%, 100% {
+    filter: brightness(1) drop-shadow(0 0 0px transparent);
+  }
+  85% {
+    filter: brightness(1.9) drop-shadow(0 0 10px var(--marrom-claro));
+  }
+}
+.servico-icon { animation: icon-shine 3.6s ease-in-out infinite; }
+.servico-card:nth-child(1) .servico-icon { animation-delay: 0.0s; }
+.servico-card:nth-child(2) .servico-icon { animation-delay: 0.6s; }
+.servico-card:nth-child(3) .servico-icon { animation-delay: 1.2s; }
+.servico-card:nth-child(4) .servico-icon { animation-delay: 1.8s; }
+.servico-card:nth-child(5) .servico-icon { animation-delay: 2.4s; }
+.servico-card:nth-child(6) .servico-icon { animation-delay: 3.0s; }
+
+.diferencial-icon { animation: icon-shine 3.6s ease-in-out infinite; }
+.diferencial-item:nth-child(1) .diferencial-icon { animation-delay: 0.3s; }
+.diferencial-item:nth-child(2) .diferencial-icon { animation-delay: 0.9s; }
+.diferencial-item:nth-child(3) .diferencial-icon { animation-delay: 1.5s; }
+.diferencial-item:nth-child(4) .diferencial-icon { animation-delay: 2.1s; }
+
+/* Pausa shine no hover (foco no conteúdo) */
+.servico-card:hover .servico-icon,
+.diferencial-item:hover .diferencial-icon {
+  animation-play-state: paused;
+  filter: brightness(1.6) drop-shadow(0 0 8px var(--marrom-claro));
+}
+
+/* ===FOOTER WORDMARK=== */
+#footer {
+  position: relative;
+  overflow: hidden;
+}
+.footer-wordmark {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(4.5rem, 13vw, 11rem);
+  color: rgba(255, 255, 255, 0.04);
+  text-align: center;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  padding: 40px 0 0;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.footer-credit {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.75rem;
+  color: rgba(250, 248, 245, 0.2);
+  text-align: center;
+  padding: 16px 0 0;
+  letter-spacing: 0.04em;
+}
+.footer-credit a {
+  color: rgba(201, 168, 130, 0.4);
+  transition: color 0.2s ease;
+}
+.footer-credit a:hover {
+  color: var(--marrom-claro);
 }
 
 /* ===RESPONSIVIDADE=== */
