@@ -234,15 +234,16 @@
 
         <div class="sobre-visual reveal">
           <div class="sobre-foto-wrapper">
+            <!-- Quando tiver foto: substitua foto-advogado.png pelo arquivo real -->
             <img
               src="assets/img/foto-advogado.png"
               alt="Foto do advogado"
               class="sobre-foto"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+              onerror="this.style.display='none';"
             >
-            <!-- Placeholder visível até foto-advogado.jpg ser substituído -->
-            <div class="sobre-foto-placeholder" aria-hidden="true">
-              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <div class="sobre-foto-placeholder">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
               </svg>
               <span>foto-advogado.png</span>
@@ -606,32 +607,51 @@
   <!-- ===FOOTER=== -->
   <footer id="footer" role="contentinfo">
     <div class="footer-wordmark" aria-hidden="true">WCOFFICE</div>
-    <div class="container">
-      <div class="footer-inner">
 
-        <div class="footer-logo">
+    <div class="container">
+
+      <!-- Corpo: logo horizontal + info + links -->
+      <div class="footer-main">
+        <div class="footer-main-logo">
           <img
-            src="assets/logos/dividida/logo-reduzida.png"
+            src="assets/logos/horizontal/logo-horizontal.png"
             alt="WC Office Advocacia"
-            onerror="this.style.display='none'; this.insertAdjacentHTML('afterend','<span style=\'font-family:Instrument Serif,serif;color:rgba(250,248,245,0.7);font-size:1.1rem;\'>WC Office</span>')"
+            class="footer-logo-full"
+            onerror="this.style.display='none'"
           >
         </div>
-
-        <p class="footer-center">
-          Advocacia Judicial e Administrativa
+        <p class="footer-desc">
+          Especialistas em Direito Previdenciário.<br>
+          Advocacia Judicial e Administrativa.
         </p>
-
-        <div class="footer-right">
-          <span>&copy; <span id="footer-year">2025</span> WC Office Advocacia</span>
-          <span>OAB/RJ · Todos os direitos reservados</span>
-        </div>
-
+        <nav class="footer-nav" aria-label="Links do rodapé">
+          <a href="#servicos">Serviços</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#contato">Contato</a>
+          <a href="https://wa.me/5521964548006" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </nav>
       </div>
 
-      <p class="footer-credit">
-        Site desenvolvido por
-        <a href="https://instagram.com/acruz_studio" target="_blank" rel="noopener noreferrer">Acruz Studio</a>
-      </p>
+      <div class="footer-divider"></div>
+
+      <!-- Base: só o ícone/monograma + copyright -->
+      <div class="footer-bottom">
+        <img
+          src="assets/logos/monogramas/logo-monograma-branca.png"
+          alt=""
+          class="footer-icon"
+          aria-hidden="true"
+          onerror="this.style.display='none'"
+        >
+        <span class="footer-copy">
+          &copy; <span id="footer-year">2025</span> WC Office Advocacia · OAB/RJ
+        </span>
+        <p class="footer-credit">
+          Site por
+          <a href="https://instagram.com/acruz_studio" target="_blank" rel="noopener noreferrer">Acruz Studio</a>
+        </p>
+      </div>
+
     </div>
   </footer>
 
