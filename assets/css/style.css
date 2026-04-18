@@ -255,9 +255,9 @@ ul, ol {
 }
 .hero-pattern {
   background-image: url('../Pattern--Grade-Bege.png');
-  background-repeat: repeat;
-  background-size: 120px auto;
-  opacity: 0.9;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .hero-badge {
   display: inline-flex;
